@@ -41,7 +41,8 @@ const PostActions = ({ post, commentCount }) => {
 
       <button className="icon-btn space-x-2 px-6 py-3 text-xs lg:px-12 lg:text-sm">
         <img src={CommentIcon} alt="Comment" />
-        <span>Comment({commentCount ?? 0})</span>
+        {/*<span>Comment({commentCount ?? 0})</span>*/}
+        <span>Comment</span>
       </button>
 
       <button className="flex-center gap-2 text-xs font-bold text-[#B8BBBF] hover:text-white lg:text-sm">

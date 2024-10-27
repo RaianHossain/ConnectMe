@@ -16,7 +16,7 @@ const RegistrationPage = () => {
             />
             <div>
               <h1 className="mb-3 text-4xl font-bold lg:text-[40px]">
-                Facehook
+                Connect Me
               </h1>
               <p className="max-w-[452px] text-gray-400/95 lg:text-lg">
                 Create a social media app with features like, showing the post,

@@ -7,7 +7,7 @@ const NewPost = () => {
     const [showPostEntry, setShowPostEntry] = useState(false);
     const { auth } = useAuth();
     const {state:profile} = useProfile()
-    const user = auth?.user ?? profile?.user;
+    const user = profile?.user ?? auth?.user;
 
     return (
         <>

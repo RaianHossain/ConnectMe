@@ -29,7 +29,7 @@ const HomePage = () => {
         console.error(error);
         dispatch({
           type: actions.post.DATA_FETCH_ERROR,
-          error: error.message,
+          error: error.response.data,
         });
       }
     };
@@ -41,14 +41,14 @@ const HomePage = () => {
     return <div> We are working...</div>;
   }
 
-  if (state?.error) {
-    return <div> Error in fatching posts {state?.error?.message}</div>;
-  }
+  // if (state?.error) {
+  //   return <div> Error in fatching posts: {state?.error?.message}</div>;
+  // }
 
   return (
     <div>
       <NewPost />
-      <PostList posts={state.posts} />
+      {state.posts.length > 0 ? (<PostList posts={state.posts} />) : (<div> No posts yet</div>)}
     </div>
   );
 };

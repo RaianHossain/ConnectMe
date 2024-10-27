@@ -54,27 +54,31 @@ const comment = (postId, db, user, comment) => {
 };
 
 const deleteComment = (postId, commentId, db, user) => {
+  
   // Get the post from the database
   const post = getPostById(postId, db);
 
-  // Remove the comment from the comments array
-  const comments = post.comments.filter((comment) => comment.id !== commentId);
-
   // get the user info
   const { id } = user;
-
-  // Only Post Author or Comment Author Able to delete the comment
-  if (post.author.id != id || comments.find((comment) => comment.author.id !== id)) {
-    throw new Error("You are not allowed to delete this comment");
-  }
-
+  const postedComments = post.comments;
+  console.log(postedComments.find(cmt => cmt.id === commentId));
   // Check if the comment exists in comments array
-  if (comments.length === post.comments.length) {
+  if (!postedComments.find(cmt => cmt.id === commentId)) {
     throw new Error("Comment not found");
   }
 
-  // Update the post with the new comments
-  db.get("posts").updateById(postId, { comments }).write();
+  let comments;
+  // Only Post Author or Comment Author Able to delete the comment
+  if (post.author.id == id || postedComments.find((comment) => comment.author.id === id)) {
+    // Remove the comment from the comments array
+    comments = postedComments.filter((comment) => comment.id !== commentId);
+
+    // Update the post with the new comments
+    db.get("posts").updateById(postId, { comments }).write();
+  } else {
+    throw new Error("You are not allowed to delete this comment");
+  } 
+
 
   // Send the response
   return { message: "Comment Deleted", commentCount: comments.length, comments };

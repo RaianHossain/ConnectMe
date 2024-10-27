@@ -13,7 +13,7 @@ function PostComments({ post }) {
   const { api } = useAxios();
   const {state:profile} = useProfile();
 
-  const user = auth?.user ?? profile?.user;
+  const user = profile?.user ?? auth?.user;
 
   const addComment = async (event) => {
     const keyCode = event.keyCode;
@@ -58,7 +58,7 @@ function PostComments({ post }) {
         </div>
       </div>
 
-      <PostCommentList comments={comments} />
+      <PostCommentList postId={post.id} comments={comments} setComments={setComments} />
     </div>
   );
 }

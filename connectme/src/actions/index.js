@@ -5,7 +5,8 @@ export const actions = {
         DATA_FETCH_ERROR: "PROFILE_DATA_FETCH_ERROR",
         DATA_EDITED: "PROFILE_DATA_EDITED",
         IMAGE_UPDATED: "PROFILE_IMAGE_UPDATED",
-        POST_EDITED: "POST_EDITED"
+        POST_EDITED: "POST_EDITED",
+        POST_DELETED: "POST_DELETED",
     },
 
     post: {
@@ -16,6 +17,7 @@ export const actions = {
         POST_DELETED: "POST_DATA_DELETED",
         POST_LIKED: "POST_LIKED",
         POST_COMMENTED: "POST_COMMENTED",
-        POST_EDITED: "POST_EDITED"
+        POST_EDITED: "POST_EDITED",
+        COMMENT_DELETED: "COMMENT_DELETED"
     },
 }

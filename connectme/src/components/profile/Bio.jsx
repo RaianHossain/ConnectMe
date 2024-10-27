@@ -32,7 +32,7 @@ function Bio() {
   };
 
   return (
-    <div class="mt-4 flex items-start gap-2 lg:mt-6">
+    <div className="mt-4 flex items-start gap-2 lg:mt-6">
       {isEditing ? (
         <textarea
           cols={55}
@@ -42,8 +42,8 @@ function Bio() {
           onChange={(e) => setBio(e.target.value)}
         />
       ) : (
-        <div class="flex-1">
-          <p class="leading-[188%] text-gray-400 lg:text-lg">
+        <div className="flex-1">
+          <p className="leading-[188%] text-gray-400 lg:text-lg">
             {state?.user?.bio}
           </p>
         </div>
@@ -51,12 +51,12 @@ function Bio() {
 
       {/* <!-- Edit Bio button. The Above bio will be editable when clicking on the button --> */}
       {isEditing ? (
-        <button class="flex-center h-7 w-7 rounded-full" onClick={handleSubmit}>
+        <button className="flex-center h-7 w-7 rounded-full" onClick={handleSubmit}>
           <img src={Close} alt="close" />
         </button>
       ) : (
         <button
-          class="flex-center h-7 w-7 rounded-full"
+          className="flex-center h-7 w-7 rounded-full"
           onClick={() => setIsEditing(true)}
         >
           <img src={Edit} alt="edit" />

@@ -11,7 +11,7 @@ const LoginForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-    setErrors,
+    setError,
   } = useForm();
 
   const submitForm = async (formData) => {
@@ -35,9 +35,9 @@ const LoginForm = () => {
       }
     } catch (err) {
       console.log(err);
-      setErrors("root.random", {
+      setError("root.random", {
         type: "random",
-        message: `Error: ${err.response.data.message}`,
+        message: `Error: ${err.response.data.error}`,
       });
     }
   };

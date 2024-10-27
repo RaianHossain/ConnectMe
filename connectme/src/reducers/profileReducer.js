@@ -60,6 +60,14 @@ const profileReducer = (state, action) => {
                     }),
             }
         }
+
+        case actions.profile.POST_DELETED: {
+            return {
+                ...state,
+                loading: false,
+                posts: state.posts.filter((item) => item.id !== action.data),
+            }
+        }
     }
 }
 
