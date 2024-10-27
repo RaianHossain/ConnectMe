@@ -16,7 +16,7 @@ const Header = () => {
     <nav className="sticky top-0 z-50 border-b border-[#3F3F3F] bg-[#1E1F24] py-4">
       <div className="container flex flex-col items-center justify-between gap-6 sm:flex-row">
         <Link to="/">
-          <h3>Connect Me</h3>
+          <h3 className="font-medium text-2xl">Connect Me</h3>
         </Link>
 
         <div className="flex items-center space-x-4">
