@@ -15,9 +15,13 @@ const PostActions = ({ post, commentCount }) => {
       const response = await api.patch(
         `${import.meta.env.VITE_SERVER_BASE_URL}/posts/${post.id}/like`
       );
-
+      console.log(response);
       if (response.status === 200) {
-        setLiked(true);
+        if(response.data.message === 'Post Unliked') {
+          setLiked(false);
+        } else if(response.data.message === 'Post Liked') {
+          setLiked(true);
+        }        
       }
     } catch (error) {
       console.error(error);
@@ -36,7 +40,7 @@ const PostActions = ({ post, commentCount }) => {
           src={liked ? LikeFilledIcon : LikeIcon}
           alt="Like"
         />
-        {!liked && <span>Like</span>}
+        {!liked ? (<span>Like</span>) : (<span>Liked</span>)}
       </button>
 
       <button className="icon-btn space-x-2 px-6 py-3 text-xs lg:px-12 lg:text-sm">
