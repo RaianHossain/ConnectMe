@@ -19,8 +19,8 @@ const RegistrationPage = () => {
                 Connect Me
               </h1>
               <p className="max-w-[452px] text-gray-400/95 lg:text-lg">
-                Create a social media app with features like, showing the post,
-                post details, reactions, comments and profile.
+                An app where you can post your thoughts and photos.
+                Also can see other's posts and like or make comments or both.
               </p>
             </div>
           </div>
