@@ -25,7 +25,7 @@ function ProfileImage() {
 
       const response = await api.post(
         `${import.meta.env.VITE_SERVER_BASE_URL}/profile/${
-          state?.user?.id
+          state?.user?._id
         }/avatar`,
         formData
       );
@@ -36,11 +36,7 @@ function ProfileImage() {
             type: actions.profile.IMAGE_UPDATED,
             payload: response.data,
           });
-          setAvatar(
-            `${import.meta.env.VITE_SERVER_BASE_URL}/${response.data.avatar}`
-          );
-        }, 2000)
-        
+        }, 2000);
       }
     } catch (err) {
       dispatch({

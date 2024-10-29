@@ -39,7 +39,7 @@ const RegistrationForm = () => {
       console.error(error);
       setError("root.random", {
         type: "random",
-        message: `Something went wrong: ${error.message}`,
+        message: `Something went wrong: ${error.response.data.message}`,
       });
     }
   };

@@ -1,10 +1,9 @@
 import React from "react";
 import PostCard from "./PostCard";
-import { usePost } from "../../hooks/usePost";
 
 function PostList({ posts }) {
   return (
-    <>{posts && posts.map((post) => <PostCard key={post.id} post={post} />)}</>
+    <>{posts && posts.map((post) => <PostCard key={post._id} post={post} />)}</>
   );
 }
 

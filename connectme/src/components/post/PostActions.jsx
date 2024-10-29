@@ -7,21 +7,21 @@ import { useAuth } from "../../hooks/useAuth";
 import useAxios from "../../hooks/useAxios";
 const PostActions = ({ post, commentCount }) => {
   const { auth } = useAuth();
-  const [liked, setLiked] = useState(post?.likes?.includes(auth?.user?.id));
+  const [liked, setLiked] = useState(post?.likes?.includes(auth?.user?._id));
   const { api } = useAxios();
 
   const handleLike = async () => {
     try {
       const response = await api.patch(
-        `${import.meta.env.VITE_SERVER_BASE_URL}/posts/${post.id}/like`
+        `${import.meta.env.VITE_SERVER_BASE_URL}/posts/${post._id}/like`
       );
       console.log(response);
       if (response.status === 200) {
-        if(response.data.message === 'Post Unliked') {
+        if (response.data.message === "Post Unliked") {
           setLiked(false);
-        } else if(response.data.message === 'Post Liked') {
+        } else if (response.data.message === "Post Liked") {
           setLiked(true);
-        }        
+        }
       }
     } catch (error) {
       console.error(error);
@@ -40,7 +40,7 @@ const PostActions = ({ post, commentCount }) => {
           src={liked ? LikeFilledIcon : LikeIcon}
           alt="Like"
         />
-        {!liked ? (<span>Like</span>) : (<span>Liked</span>)}
+        {!liked ? <span>Like</span> : <span>Liked</span>}
       </button>
 
       <button className="icon-btn space-x-2 px-6 py-3 text-xs lg:px-12 lg:text-sm">

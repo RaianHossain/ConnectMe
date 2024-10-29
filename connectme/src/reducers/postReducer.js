@@ -43,7 +43,7 @@ const postReducer = (state, action) => {
             return {
                 ...state,
                 loading: false,
-                posts: state.posts.filter((item) => item.id !== action.data),
+                posts: state.posts.filter((item) => item._id !== action.data),
             };
         }
 
@@ -52,7 +52,7 @@ const postReducer = (state, action) => {
                 ...state,
                 loading: false,
                 posts: state.posts.map(post => {
-                        if(post.id === action.data.id) {
+                        if(post._id === action.data._id) {
                             return action.data
                         } else {
                             return post

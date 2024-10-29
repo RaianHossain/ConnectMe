@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
 import { actions } from "../../actions";
 import AddPhoto from "../../assets/icons/addPhoto.svg";
 import CloseIcon from "../../assets/icons/close.svg";
@@ -36,7 +35,6 @@ const PostEntry = ({ onCreate }) => {
   };
 
   const handlePostSubmit = async (formData) => {
-    console.log(formData);
     const newFormData = new FormData();
     newFormData.append("content", formData.content);
     if (imageFile) {
@@ -52,7 +50,7 @@ const PostEntry = ({ onCreate }) => {
         newFormData
       );
 
-      if (response.status === 200) {
+      if (response.status === 201) {
         onCreate();
         setTimeout(() => {
           dispatch({
@@ -60,22 +58,14 @@ const PostEntry = ({ onCreate }) => {
             data: response.data,
           });
         }, 1000);
-        // Close this UI
-        // refreshPage();
       }
     } catch (error) {
       console.error(error);
       dispatch({
         type: actions.post.DATA_FETCH_ERROR,
-        error: response.error,
+        error: error.response?.data?.message,
       });
     }
-  };
-
-  const navigate = useNavigate();
-
-  const refreshPage = () => {
-    navigate(0);
   };
 
   return (

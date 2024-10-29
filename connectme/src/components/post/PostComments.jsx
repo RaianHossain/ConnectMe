@@ -1,17 +1,15 @@
 import React, { useState } from "react";
 import { useAuth } from "../../hooks/useAuth";
 import useAxios from "../../hooks/useAxios";
-import PostCommentList from "./PostCommentList";
 import useProfile from "../../hooks/useProfile";
-
-
+import PostCommentList from "./PostCommentList";
 
 function PostComments({ post }) {
   const { auth } = useAuth();
   const [comments, setComments] = useState(post?.comments);
   const [comment, setComment] = useState("");
   const { api } = useAxios();
-  const {state:profile} = useProfile();
+  const { state: profile } = useProfile();
 
   const user = profile?.user ?? auth?.user;
 
@@ -21,7 +19,7 @@ function PostComments({ post }) {
     if (keyCode === 13) {
       try {
         const response = await api.patch(
-          `${import.meta.env.VITE_SERVER_BASE_URL}/posts/${post.id}/comment`,
+          `${import.meta.env.VITE_SERVER_BASE_URL}/posts/${post._id}/comment`,
           { comment }
         );
 
@@ -58,7 +56,11 @@ function PostComments({ post }) {
         </div>
       </div>
 
-      <PostCommentList postId={post.id} comments={comments} setComments={setComments} />
+      <PostCommentList
+        postId={post._id}
+        comments={comments}
+        setComments={setComments}
+      />
     </div>
   );
 }

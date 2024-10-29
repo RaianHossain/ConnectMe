@@ -14,7 +14,7 @@ function Bio() {
   const handleSubmit = async () => {
     try {
       const response = await api.patch(
-        `${import.meta.env.VITE_SERVER_BASE_URL}/profile/${state?.user?.id}`,
+        `${import.meta.env.VITE_SERVER_BASE_URL}/profile/${state?.user?._id}`,
         { bio }
       );
       console.log(response.data);
@@ -51,7 +51,10 @@ function Bio() {
 
       {/* <!-- Edit Bio button. The Above bio will be editable when clicking on the button --> */}
       {isEditing ? (
-        <button className="flex-center h-7 w-7 rounded-full" onClick={handleSubmit}>
+        <button
+          className="flex-center h-7 w-7 rounded-full"
+          onClick={handleSubmit}
+        >
           <img src={Close} alt="close" />
         </button>
       ) : (

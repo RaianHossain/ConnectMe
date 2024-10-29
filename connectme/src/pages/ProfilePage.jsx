@@ -16,7 +16,7 @@ const ProfilePage = () => {
     const fetchProfile = async () => {
       try {
         const response = await api.get(
-          `${import.meta.env.VITE_SERVER_BASE_URL}/profile/${auth.user.id}`
+          `${import.meta.env.VITE_SERVER_BASE_URL}/profile/${auth.user._id}`
         );
         console.log(response);
         if (response.status === 200) {
